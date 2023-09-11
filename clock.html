@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="clock.css">
+</head>
+<body>
+    <div class="container">
+        <div id="wrapper">
+            <span id="hours">00</span>
+            <span>:</span>
+            <span id="mins">00</span>
+            <span>:</span>
+            <span id="sec">00</span>
+            <span id="ampm">AM</span>
+        </div>
+    </div>
+    <script>
+        function disp() {
+            let dateTime = new Date();
+            let hr = dateTime.getHours();
+            let min = dateTime.getMinutes();
+            let sec = dateTime.getSeconds();
+            let ampm = "AM"; // Initialize ampm here
+
+            if (hr > 12) {
+                hr = hr - 12;
+                ampm = "PM"; // Set ampm to "PM" when hr is greater than 12
+            }
+
+            document.getElementById("hours").innerHTML = hr < 10 ? "0" + hr : hr;
+            document.getElementById("mins").innerHTML = min < 10 ? "0" + min : min;
+            document.getElementById("sec").innerHTML = sec < 10 ? "0" + sec : sec;
+            document.getElementById("ampm").innerHTML = ampm; // Update ampm element
+        }
+
+        // Call disp() initially to set the time
+        disp();
+
+        // Use setInterval to update the time every 200 milliseconds
+        setInterval(disp, 200);
+    </script>
+</body>
+</html>
